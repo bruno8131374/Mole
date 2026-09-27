@@ -427,10 +427,12 @@ function Remove-EmptyDirectories {
     $maxIterations = 5
     
     for ($i = 0; $i -lt $maxIterations; $i++) {
-        $emptyDirs = Get-ChildItem -Path $Path -Directory -Recurse -Force -ErrorAction SilentlyContinue |
+        # @() keeps a single empty folder an array: a lone DirectoryInfo has no
+        # .Count, which Windows PowerShell 5.1 strict mode rejects.
+        $emptyDirs = @(Get-ChildItem -Path $Path -Directory -Recurse -Force -ErrorAction SilentlyContinue |
                      Where-Object { 
                          (Get-ChildItem -Path $_.FullName -Force -ErrorAction SilentlyContinue | Measure-Object).Count -eq 0
-                     }
+                     })
         
         if (-not $emptyDirs -or $emptyDirs.Count -eq 0) {
             break

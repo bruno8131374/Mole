@@ -585,7 +585,7 @@ function Main {
     Clear-Host
 
     # Get installed apps
-    $apps = Get-InstalledApplications -ForceRescan:$Rescan
+    $apps = @(Get-InstalledApplications -ForceRescan:$Rescan)
 
     if ($apps.Count -eq 0) {
         Write-MoleWarning "No applications found"
@@ -595,7 +595,7 @@ function Main {
     Write-Info "Found $($apps.Count) applications"
 
     # Show selection menu
-    $selected = Show-AppSelectionMenu -Apps $apps
+    $selected = @(Show-AppSelectionMenu -Apps $apps)
 
     if ($selected.Count -eq 0) {
         Write-Info "No applications selected"

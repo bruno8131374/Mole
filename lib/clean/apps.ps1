@@ -134,7 +134,9 @@ function Clear-OrphanedAppData {
     
     Start-Section "Orphaned app data"
     
-    $orphaned = Find-OrphanedAppData -DaysOld $DaysOld
+    # @() keeps a single result an array; one hashtable alone would report
+    # its key count as .Count.
+    $orphaned = @(Find-OrphanedAppData -DaysOld $DaysOld)
     
     if ($orphaned.Count -eq 0) {
         Write-Info "No orphaned app data found"
@@ -143,7 +145,7 @@ function Clear-OrphanedAppData {
     }
     
     # Filter by size (only clean if > 10MB to avoid noise)
-    $significantOrphans = $orphaned | Where-Object { $_.Size -gt 10MB }
+    $significantOrphans = @($orphaned | Where-Object { $_.Size -gt 10MB })
     
     if ($significantOrphans.Count -gt 0) {
         $totalSize = ($significantOrphans | Measure-Object -Property Size -Sum).Sum
