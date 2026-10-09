@@ -1,0 +1,5 @@
+# Protegido: cache de shaders da NVIDIA (evita engasgos em jogos)
+C:\Users\Bruno\AppData\Local\NVIDIA\DXCache*
+C:\Users\Bruno\AppData\Local\NVIDIA\GLCache*
+C:\Users\Bruno\AppData\Local\NVIDIA Corporation\NV_Cache*
+C:\Users\Bruno\AppData\Local\Temp\NVIDIA Corporation\NV_Cache*
