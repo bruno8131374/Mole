@@ -11,5 +11,6 @@ $mode = if ($DryRun) { ' (simulacao)' } else { '' }
 $cleanArgs = @('clean')
 if ($DryRun) { $cleanArgs += '--dry-run' }
 & 'C:\Users\Bruno\Mole\mole.ps1' @cleanArgs *>&1 |
+    Where-Object { $_ -isnot [hashtable] } |
     ForEach-Object { ($_ | Out-String).TrimEnd() -replace $ansi, '' } |
     Out-File -FilePath $log -Append -Encoding utf8
