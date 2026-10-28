@@ -3,3 +3,6 @@ C:\Users\Bruno\AppData\Local\NVIDIA\DXCache*
 C:\Users\Bruno\AppData\Local\NVIDIA\GLCache*
 C:\Users\Bruno\AppData\Local\NVIDIA Corporation\NV_Cache*
 C:\Users\Bruno\AppData\Local\Temp\NVIDIA Corporation\NV_Cache*
+# Protegido: relatorios de erro e despejos de memoria (diagnostico dos travamentos)
+C:\Users\Bruno\AppData\Local\Microsoft\Windows\WER*
+C:\Users\Bruno\AppData\Local\CrashDumps*
